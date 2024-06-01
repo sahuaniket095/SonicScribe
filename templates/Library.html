@@ -1,0 +1,33 @@
+{% extends "Base.html" %}
+{% block content %}
+
+<div class=" flex justify-center h-14 py-4 mt-8">
+    <h5 class="text-blue-900 text-6xl font-bold">SonicScribe</h5>
+</div>
+<br>
+
+<div class="container -mt-9">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-48 ">
+    {% for key, book in book_dict.items %}
+    <div class="bg-white rounded-lg  shadow-2xl w-64 mr-7  p-6 ml-8 -mb-52 mt-10">
+      
+        
+        <img src="{{book.image}}"  class="w-52 object-cover mb-4 rounded-md shadow-xl">
+        
+        <a href="{% url 'tag_books' tag=book.tags %}">   <button class="bg-cyan-300  text-blue-900 font-bold py-2 px-4 rounded-md w-full -mt-2 shadow-xl">Listen now</button> </a> 
+        <a href="{{ book.pdf_file.url }}" target="_blank">
+            <button class="bg-cyan-300 text-blue-900 font-bold py-2 px-4 rounded-md w-full mt-2 shadow-xl">Read now</button>
+        </a>
+    </div>
+{% endfor %}
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+

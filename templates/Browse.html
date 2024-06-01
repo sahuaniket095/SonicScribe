@@ -1,0 +1,83 @@
+{% extends "Base.html" %}
+
+{% block content %}
+    
+<div class="mt-16 mr-10 mb-8">
+    <div class="fixed top-0 w-full bg-white shadow-2xl p-4 mt-10">
+        <div class="max-w-screen-md mx-auto flex justify-between items-center " >
+            <form method="GET" action="{% url 'search_books_by_tag' %}" >
+           
+                <input type="text" name="tag" placeholder="Search for a great book" class="shadow-xl  rounded py-2 pr-96 pl-4  ">
+             
+                <button type="submit" class="bg-cyan-300  text-blue-900 font-bold py-2 px-4 rounded shadow-xl mr-4">Search</button>
+         
+            </form>
+        </div>
+    </div>
+
+
+
+
+ 
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-48 ">
+       
+
+   {% for tag, i in books_by_tag.items %}
+        <div class="bg-white rounded-lg  shadow-2xl w-64 mr-7  p-6 ml-8 mt-10 -mb-52 ">
+            <img src="{{i.image}}"  class="w-52 object-cover mb-4 rounded-md shadow-xl">
+           
+         <a href="{% url 'tag_books' tag=i.tags %}">   <button class="bg-cyan-300  text-blue-900 font-bold py-2 px-4 rounded-md w-full -mt-2 shadow-xl">Listen now</button> </a> 
+         <a href="{{ i.pdf_file.url }}" target="_blank">
+            <button class="bg-cyan-300 text-blue-900 font-bold py-2 px-4 rounded-md w-full mt-2 shadow-xl">Read now</button>
+        </a>
+        
+        
+        
+            <form action="Index" method="post">
+                {% csrf_token %}
+                <input type="text" value="{{ i.book_id }}" name="book" hidden>
+                <input value="Add to Queue" type="submit" class="bg-cyan-300 text-blue-900 font-bold py-2 px-4 rounded-md w-full mt-2 shadow-xl">
+            </form>
+           
+        </div>
+       
+        {% endfor %}   
+       
+            
+    </div>
+    </div>
+
+
+ 
+  
+           
+           
+                
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  
+
+
+
+
+{% endblock content %}

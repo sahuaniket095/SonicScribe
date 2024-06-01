@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonicScribe</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/Styles.css">
+</head>
+
+
+<body class="bg-white scrollbar-hidden overflow-y-scroll">
+    
+    <nav class="bg-cyan-300 fixed top-0 w-full z-10 shadow-xl">
+        <ul class="flex justify-around py-2">
+            <li class="mr-2">
+                <a href="/Home" class=" text-xl font-semibold text-blue-900 cursor-pointer">Home</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="mr-2">
+                <a href="/categories" class="text-xl font-semibold text-blue-900 cursor-pointer">Genres</a>
+            </li>
+            <li class="mr-2">
+                <a href="/Browse" class="text-xl font-semibold text-blue-900 cursor-pointer">Browse</a>
+            </li>
+            <li class="mr-2">
+                <a href="/Library" class="text-xl font-semibold text-blue-900 cursor-pointer">Queue
+                   
+                </a>
+            </li>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <li class="mr-2">
+                <button type="submit" class="text-xl font-semibold text-blue-900 cursor-pointer">Logout</button>
+                </li>
+            </form>
+        {% else %}
+        <li class="mr-2">
+            <a href="{% url 'login' %}" class="text-xl font-semibold text-blue-900 cursor-pointer">Genres</a>
+        </li>
+        <li class="mr-2">
+            <a href="{% url 'login' %}" class="text-xl font-semibold text-blue-900 cursor-pointer">Browse</a>
+        </li>
+        <li class="mr-2">
+            <a href="{% url 'login' %}" class="text-xl font-semibold text-blue-900 cursor-pointer">Queue
+               
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'login' %}" class="text-xl font-semibold text-blue-900 cursor-pointer">Login</a>
+        </li>
+        {% endif %}
+        
+        </ul>
+    </nav>
+    
+  
+   {% block content %}
+   
+
+    <div class="p-4 mt-8">
+        <div class="flex align-baseline">
+            <div class="flex flex-col justify-center py-4 px-5">
+                <h5 class="text-blue-900 text-6xl font-bold">SonicScribe</h5>
+                
+                <div class="pt-6 text-2xl opacity-65 font-bold">
+                    
+"Enter a realm where words dance off the pages 
+<br>
+and melodies of imagination intertwine, as you
+
+embark <br> on an epic voyage through the boundless
+
+universe of audiobooks, where stories come alive and dreams take flight."
+                
+                </div>
+            </div>
+            
+    <div class=" opacity-90">
+         <img src="/static/dist/gg2.jpg" alt="">           
+            </div>  
+         </div>
+    </div>
+
+    <hr class="border-t-2 border-gray-200">
+    <div>
+        <div class="flex align-baseline p-6">
+            <img src="static/dist/hp2.png" class="h-96">           
+           
+            <div class="flex flex-col justify-center py-4 px-5">
+                <h5 class="text-blue-900 text-6xl  font-bold">Listen anytime, anywhere </h5>
+                
+                <div class="pt-6 text-2xl opacity-65 font-bold">
+                    "Embark on a boundless journey through words, where stories come alive in the theater of your mind. With our audiobook collection, immerse yourself in tales that transcend time and space—listen anytime, anywhere, and let your imagination roam free."
+                </div>
+            </div>
+            
+    
+         
+         </div>
+    </div>
+
+
+
+
+
+
+<hr class="border-t-2 border-gray-200 ">
+<div class=" flex justify-center h-14 py-3">
+    <h5 class="text-blue-900 text-6xl font-bold">Choose your first listen</h5>
+</div>
+<div class="flex  ml-5">
+    <div class="flex flex-col px-5">
+        <div class=" text-2xl opacity-65 font-bold  px-5 py-5">
+            <br>
+            <br>
+           
+            "Discover a symphony of stories waiting to be explored,  where the whispers of authors and the
+            
+            melodies of narrators unite to create a tapestry of wonderment in the vast library of audiobooks, inviting you to lose yourself in tales untold and <br> worlds unseen."
+           <br>
+           <br>
+           
+        </div>
+        <div class="px-5">
+            {% if user.is_authenticated %}
+            <a href="/Browse">  
+                <button class="bg-cyan-300 text-blue-900 text-xl px-6 py-3 font-semibold rounded-full shadow-xl">Browse Books</button>
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}">  
+                <button class="bg-cyan-300 text-blue-900 text-xl px-6 py-3 font-semibold rounded-full shadow-xl">Browse Books</button>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+  
+   
+   <img src="/static/dist/i1.jpg" alt="" class="w-2/5 pt-6 ml-14">
+</div>
+
+
+
+
+
+                            <!--box 1-->  
+
+<hr class="border-t-2 border-gray-200">
+
+ <div class=" flex flex-col justify-start h-14 ">
+    <h3 class="text-blue-900 text-3xl py-4 px-5 pt-6 font-bold">Audiobooks</h3>
+  
+    <div class="opacity-65  py-1 px-5 font-bold">
+        An audiobook is a recording of a text read aloud, either word for word or abridged. They are a convenient alternative to traditional books and an important media for the visually impaired. Audiobooks have come a long way since the 1930s when the first full length recordings appeared for people with disabilities. They were made available to the general public in the 1950s, but it wasn’t until the 1970s with the release of cassette tapes that popularity began to rise, especially among commuters while driving. Today, we no longer use bulky recording formats to listen to audiobooks. New digital devices with space for thousands of files allow you to carry a library around, and download or stream audio directly online. Popular audio formats like mp3 files play on the majority of digital devices. Platforms such as Google Books and Amazon, provide access to huge libraries of books, while smaller non-profit organizations, such as Librivox, allow public domain access to free audiobooks read by volunteers.
+ </div>
+ <br>
+                              <!--box 2-->  
+
+
+   {% endblock content %}
+ 
+<div class="flex flex-col ">
+    <div class="flex flex-row px-5 pt-5 justify-between bg-cyan-300">
+      
+         
+        <div class="flex flex-col">
+            <div class=" h-4/6 text-blue-900 text-2xl font-bold">Company</div>
+            <div class=" text-blue-900 cursor-pointer">Careers</div>
+            <div class=" text-blue-900 cursor-pointer">Team</div>
+            <div class=" text-blue-900 cursor-pointer">About us</div>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="flex flex-col">
+            <div class="h-4/6 text-blue-900 text-2xl font-bold">Contact</div>
+            <div class=" text-blue-900 cursor-pointer">Help & Support</div>
+            <div class=" text-blue-900 cursor-pointer">Partner with us</div>
+            <div class="text-blue-900 cursor-pointer">Ride with us</div>
+           <br>
+           <br>
+           <br>
+        </div>
+        <div class="flex flex-col">
+            <div class="h-4/6 text-blue-900 text-2xl font-bold">Legal</div>
+            
+            <div class=" text-blue-900 cursor-pointer">Terms & Conditions</div>
+            
+            <div class="text-blue-900 cursor-pointer">Privacy Policy</div>
+            <div class=" text-blue-900 cursor-pointer">Cookie Policy</div>
+            <div class=" text-blue-900 cursor-pointer">Offer terms</div>
+            <br>
+            <br>
+        </div>
+        <div class="flex flex-col">
+            <div class="h-4/6 text-blue-900 text-2xl font-bold">Social Media</div>
+            <div class=" text-blue-900 cursor-pointer">facebook</div>
+            <div class="text-blue-900 cursor-pointer">Instagram</div>
+            <div class="text-blue-900 cursor-pointer">twitter</div>
+            <div class="text-blue-900 cursor-pointer">youtube</div>
+            <br>
+            <br>
+        </div>
+    </div>   
+    
+    <div class="bg-cyan-300 px-5 text-blue-900 font-bold text-xl -mt-8">
+       
+ 
+        Explore captivating worlds and compelling narratives at your fingertips with the immersive experience of browsing audiobooks.
+        <br>
+        <br>
+    </div>
+    
+    
+</div>
+
+
+
+</body>
+</html>

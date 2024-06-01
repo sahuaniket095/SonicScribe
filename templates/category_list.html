@@ -1,0 +1,33 @@
+{% extends "Base.html" %}
+
+
+
+{% block content %}
+
+<div class=" flex justify-center h-14 py-4 mt-8 mb-2">
+    <h5 class="text-blue-900 text-6xl font-bold">SonicScribe</h5>
+</div>
+
+
+
+
+
+<div class="container ml-7">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-48">
+        {% for category in categories %}
+        <a href="{% url 'tags' category.id %}">
+        <div class="bg-white rounded-lg shadow-2xl w-48 mr-7 ml-8 mt-8 -mb-52 hover:-translate-y-2 hover:cursor-pointer">
+            <img src="{{ category.image.url }}" class="object-cover rounded-md opacity-90">
+        
+                <div class="text-blue-900 font-bold p-1">{{ category.name }}</div>
+        
+        </div>
+    </a>
+        {% endfor %}
+    </div>
+</div>
+ 
+
+{% endblock content %}
+
+

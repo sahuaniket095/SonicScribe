@@ -1,0 +1,83 @@
+{% extends "Base.html" %}
+
+
+
+{% block content %}
+
+<div class=" flex justify-center h-14 py-4 mt-8">
+    <h5 class="text-blue-900 text-6xl font-bold">{{ category.name }} Books</h5>
+</div>
+
+
+<div class="container ml-7">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-48 ">
+       
+
+   {% for tag, i in books_with_tags.items %}
+        <div class="bg-white rounded-lg  shadow-2xl w-64 mr-7 ml-12  p-6  mt-8 -mb-52 ">
+            <img src="{{i.image.url}}"  class="w-52 object-cover mb-4 rounded-md shadow-xl">
+           
+         <a href="{% url 'tag_books' tag=tag %}">   <button class="bg-cyan-300  text-blue-900 font-bold py-2 px-4 rounded-md w-full -mt-2 shadow-xl">Listen now</button> </a> 
+         <a href="{{ i.pdf_file.url }}" target="_blank">
+            <button class="bg-cyan-300 text-blue-900 font-bold py-2 px-4 rounded-md w-full mt-2 shadow-xl">Read now</button>
+        </a>
+        <form action="{% url 'Index' %}" method="post">
+            {% csrf_token %}
+            <input type="text" value="{{ i.book_id }}" name="book" hidden>
+            <input value="Add to Queue" type="submit" class="bg-cyan-300 text-blue-900 font-bold py-2 px-4 rounded-md w-full mt-2 shadow-xl">
+        </form>
+        </div>
+     
+       
+        {% endfor %}   
+       
+            
+    </div>
+    </div>
+
+
+
+ 
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Tags - {{ category.name }}</title>
+</head>
+<body>
+    <h1>Unique Tags - {{ category.name }}</h1>
+    
+    <ul>
+        {% for tag in unique_tags %}
+        <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Add a link to go back to the category list page -->
+    <a href="{% url 'category_list' %}">Back to Category List</a>
+</body>
+</html>

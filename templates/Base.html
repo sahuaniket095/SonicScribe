@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonicScribe</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/Styles.css">
+</head>
+
+
+<body class="bg-white scrollbar-hidden overflow-y-scroll">
+    
+    <nav class="bg-cyan-300 fixed top-0 w-full z-10 shadow-xl">
+        <ul class="flex justify-around py-2">
+            <li class="mr-2">
+                <a href="/Home" class=" text-xl font-semibold text-blue-900 cursor-pointer">Home</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="mr-2">
+                <a href="/categories" class="text-xl font-semibold text-blue-900 cursor-pointer">Genres</a>
+            </li>
+            <li class="mr-2">
+                <a href="/Browse" class="text-xl font-semibold text-blue-900 cursor-pointer">Browse</a>
+            </li>
+            <li class="mr-2">
+                <a href="/Library" class="text-xl font-semibold text-blue-900 cursor-pointer">Queue
+                   
+                </a>
+            </li>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <li class="mr-2">
+                <button type="submit" class="text-xl font-semibold text-blue-900 cursor-pointer">Logout</button>
+                </li>
+            </form>
+        {% else %}
+        <li class="mr-2">
+            <a href="{% url 'login' %}" class="text-xl font-semibold text-blue-900 cursor-pointer">Genres</a>
+        </li>
+        <li class="mr-2">
+            <a href="{% url 'login' %}" class="text-xl font-semibold text-blue-900 cursor-pointer">Browse</a>
+        </li>
+        <li class="mr-2">
+            <a href="{% url 'login' %}" class="text-xl font-semibold text-blue-900 cursor-pointer">Queue
+               
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'login' %}" class="text-xl font-semibold text-blue-900 cursor-pointer">Login</a>
+        </li>
+        {% endif %}
+        
+        </ul>
+    </nav>
+    
+  
+    {% block content %}
+    
+    {% endblock content %}
+    
+</body>
+</html>
+    
+   
