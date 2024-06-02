@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Dela+Gothic+One&display=swap');
+
+*{
+
+    font-family: 'Croissant One';
+}
+@layer utilities {
+    .scrollbar-hidden::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .scrollbar-hidden {
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE 10+ */
+    }
+  }
+
+ 
